@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { MyContext } from '../context/contextProvider';
 const Navbar = () => {
-    const [search, setsearch] = useContext(MyContext);
+  const [search, setSearch] = useContext(MyContext);
   return (
     <div>
       <nav className="navbar navbar-expand-md bg-body-tertiary  position-absolute top-0 start-0">
@@ -43,7 +43,7 @@ const Navbar = () => {
                 value={search}
                 placeholder="Search"
                 aria-label="Search"
-                onChange={(e)=> setsearch(e.target.value)}
+                onChange={(e) => setSearch(e.target.value)}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
