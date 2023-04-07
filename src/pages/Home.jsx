@@ -7,7 +7,8 @@ import { MyContext } from "../context/contextProvider";
 function Home() {
   const [search, setsearch] = useContext(MyContext);
   const [movies, setmovies] = useState([
-    {id:"",
+    {
+      id: "",
       name: "",
       summary: "",
       image: "",
@@ -32,7 +33,7 @@ function Home() {
             setmovies([
               ...movies,
               {
-                id:show.show.id,
+                id: show.show.id,
                 name: show.show.name,
                 summary: show.show.summary,
                 image: show.show.image.medium,
@@ -46,25 +47,25 @@ function Home() {
 
   return (
     <div>
+      <div className="row">
+        <Navbar />
+      </div>
+      <div className="row container" style={{ margin: "70px 20px 10px 20px" }}>
         <div className="row">
-          <Navbar />
+          {movies.map((mov) => {
+            return (
+              <div className="col" key={mov.id}>
+                <MoviesCard
+                  id={mov.id}
+                  name={mov.name}
+                  img={mov.image}
+                  summary={mov.summary}
+                />
+              </div>
+            );
+          })}
         </div>
-        <div className="row container" style={{ margin: "70px 20px 10px 20px" }}>
-          <div className="row">
-            {movies.map((mov) => {
-              return (
-                <div className="col">
-                  <MoviesCard
-                    id={mov.id}
-                    name={mov.name}
-                    img={mov.image}
-                    summary={mov.summary}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </div>
+      </div>
     </div>
   );
 }
